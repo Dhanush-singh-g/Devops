@@ -1,4 +1,4 @@
-name: First CI Pipeline
+name: CI with Secrets
 
 on:
   push:
@@ -7,12 +7,9 @@ jobs:
   ci-job:
     runs-on: ubuntu-latest
 
+    env:
+      MESSAGE: ${{ secrets.MY_SECRET_VALUE }}
+
     steps:
-      - name: Get source code
-        uses: actions/checkout@v3
-
-      - name: Show files
-        run: ls
-
-      - name: Run sample command
-        run: echo "Pipeline is running successfully"
+      - name: Print secret safely
+        run: echo "Message is $MESSAGE"
