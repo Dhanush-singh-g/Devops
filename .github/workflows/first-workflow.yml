@@ -1,15 +1,18 @@
-name: First Pipeline
+name: First CI Pipeline
 
 on:
   push:
 
 jobs:
-  build:
+  ci-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Get source code
         uses: actions/checkout@v3
 
-      - name: Run a command
-        run: echo "Hello from CI pipeline"
+      - name: Show files
+        run: ls
+
+      - name: Run sample command
+        run: echo "Pipeline is running successfully"
